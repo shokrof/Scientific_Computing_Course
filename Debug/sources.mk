@@ -25,4 +25,5 @@ C_UPPER_DEPS :=
 SUBDIRS := \
 src \
 src/Linear_Equ_Solving_Algorithms \
+src/Interpolation_Algorithms \
 

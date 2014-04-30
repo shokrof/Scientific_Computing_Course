@@ -1,15 +1,16 @@
-if [ "$1" == "-help" ] 
+if [ "$1" == "--help" ] 
 then
- echo  "./plot.sh <True data> <sample data>"
+ echo  "./plot.sh <True data> <Output data> <Out image>"
  exit 0
 fi
+
 True_data=$1
 Out_data=$2
-
+OutputImage=$3
 gnuplot  << __EOF
 set autoscale
+set term png
+set output '$OutputImage'
 plot '$True_data' with lines ,'$Out_data' with lines 
-
-pause 100 "press Ctrl-D to exit"
-
 __EOF
+eog $OutputImage &
