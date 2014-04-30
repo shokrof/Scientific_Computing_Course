@@ -52,15 +52,12 @@ void interpolate(string input_file_name,string output_prefix,int start,int end,i
 
 }
 int main(int argc,char* argv[]) {
-	if(argc>1 &&string("--help").compare(argv[1])==0)
-	{
+	if(argc>1 &&string("--help").compare(argv[1])==0){
 		help();
 		return -1;
 	}
 	srand(time(NULL));
-	cout<<argv[1]<<endl;
-	if(string("--solve").compare(argv[1])==0)
-	{
+	if(string("--solve").compare(argv[1])==0){
 		cout<<"sss"<<endl;
 		const int n=2;
 		GAUSSIAN_ELIMINATION_Solver solver=GAUSSIAN_ELIMINATION_Solver();
@@ -72,14 +69,12 @@ int main(int argc,char* argv[]) {
 		m[1]=vector<double>(3);
 		m[1][0]=-1,m[1][1]=2,m[1][2]=2;
 		vector<double> res=solver.solve(m,n);
-		for(int i=0;i<n;i++)
-		{
+		for(int i=0;i<n;i++){
 			cout<<res[i]<<" ";
 		}
 		cout<<endl;
 	}
-	else if(string("--interpolate").compare(argv[1])==0)
-	{
+	else if(string("--interpolate").compare(argv[1])==0){
 		string algorithm=argv[2];
 		string input_file=argv[3];
 		string output_file=argv[4];
@@ -88,22 +83,19 @@ int main(int argc,char* argv[]) {
 		int step=atoi(argv[7]);
 		int no_sample_points_used=atoi(argv[8]);
 		if(algorithm.compare("--cubic")==0){
-		interpolate<CubicSpline>(input_file,output_file,start,end,step,no_sample_points_used);
+			interpolate<CubicSpline>(input_file,output_file,start,end,step,no_sample_points_used);
 		}
-		else if (algorithm.compare("--newton")==0)
-		{
+		else if (algorithm.compare("--newton")==0){
 			interpolate<Newton>(input_file,output_file,start,end,step,no_sample_points_used);
 		}
-		else
-		{
+		else{
 			cerr<<algorithm<<" is not supported"<<endl;
 			help();
 			return -1;
 		}
 
 	}
-	else if(string("--regress").compare(argv[1])==0)
-	{
+	else if(string("--regress").compare(argv[1])==0){
 
 	}
 	else{
